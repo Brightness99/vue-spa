@@ -1,8 +1,15 @@
 <template>
-  <div class="menu-links">
-    <router-link to="/">Home</router-link>
-    <router-link to="/cart">Cart ({{ cartCount }})</router-link>
-  </div>
+  <!-- <div class="menu-links">
+    
+    
+  </div> -->
+  <b-navbar toggleable="md">
+    <b-navbar-brand href="#"></b-navbar-brand>
+    <!-- <b-nav>
+      <b-nav-item active><router-link to="/">Home</router-link></b-nav-item>
+      <b-nav-item><router-link to="/cart">Cart ({{ cartCount }})</router-link></b-nav-item>
+    </b-nav> -->
+  </b-navbar>
 </template>
 
 <script>
@@ -19,11 +26,15 @@ export default {
 }
 </script>
 
-<style>
-.menu-links a {
-  display: inline-block;
-  text-decoration: none;
-  color: #555;
-  margin-right: 30px;
-}
+<style lang="scss" scoped>
+  @import '../styles/variables.scss';
+  @import '../styles/global.scss';
+
+
+    .navbar {
+      height: 80px;
+      background-color: $color-dark;
+    }
+  
+
 </style>
