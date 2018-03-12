@@ -4,7 +4,9 @@
     
   </div> -->
   <b-navbar toggleable="md">
-    <b-navbar-brand href="#"></b-navbar-brand>
+    <b-navbar-brand href="#">
+      <menu-icon></menu-icon>
+    </b-navbar-brand>
     <!-- <b-nav>
       <b-nav-item active><router-link to="/">Home</router-link></b-nav-item>
       <b-nav-item><router-link to="/cart">Cart ({{ cartCount }})</router-link></b-nav-item>
@@ -14,8 +16,12 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import MenuIcon from '../assets/icon-menu.svg'
 
 export default {
+  components: {
+    'menu-icon': MenuIcon
+  },
   computed: {
     // mix the getters into the computed object
     ...mapGetters([
@@ -31,10 +37,16 @@ export default {
   @import '../styles/global.scss';
 
 
-    .navbar {
-      height: 80px;
-      background-color: $color-dark;
+  .navbar {
+    height: 80px;
+    background-color: $color-dark;
+    @media (min-width: 992px)  {
+      .navbar-brand svg {
+        display: none;
+      }
     }
+
+  }
   
 
 </style>

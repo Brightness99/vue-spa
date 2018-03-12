@@ -26,6 +26,26 @@ export default {
   @import './styles/variables.scss';
   @import './styles/global.scss';
 
+  @font-face {
+    font-family: 'LatoLight';
+    src: url('./fonts/Lato-Light.ttf');
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'LatoBold';
+    src: url('./fonts/Lato-Bold.ttf');
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'LatoRegular';
+    src: url('./fonts/Lato-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+
   html {
     font-size: 10px;
     h1, .h1,
@@ -38,6 +58,7 @@ export default {
       color: $color-base;
       margin-bottom: 0;
       font-weight: 400;
+      font-family: "LatoRegular" !important;
     }
     @media (max-width: 767px) {
       font-size: 9px;
@@ -51,7 +72,7 @@ export default {
   }
 
   body {
-    font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "LatoRegular" "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: $color-base;
   }
 
@@ -76,68 +97,29 @@ export default {
     padding: 1.5rem 2.5rem;
     font-size: $font-size-medium;
     color: $color-base;
+    border-radius: 6px;
+    font-family: "LatoRegular";
   }
 
-  .tags-input.form-control {
-    display: flex;
-    padding: 0.6rem;
-    .badge {
-      display: block;
-      font-size: $font-size-medium;
-      color: $color-base;
-      font-weight: 400;
-      padding: 1.3rem 1.6rem;
-      border-radius: 4px;
-      background: transparent;
-      border: solid 1px $color-light;
-      .tagsinput-remove {
-        width: 1rem;
-        height: 1rem;
-        margin-left: 0.5rem;
-      }
-    }
-    input {
-      font-size: $font-size-medium;
-      color: $color-base;
-      padding: 1rem 2rem;
-    }
+  input:focus {
+    outline: none !important;
+    -webkit-box-shadow: 0px 0px 10px 3px rgba(141, 191, 224, 1) !important;
+    -moz-box-shadow: 0px 0px 10px 3px rgba(141, 191, 224, 1) !important;
+    box-shadow: 0px 0px 10px 3px rgba(141, 191, 224, 1) !important;
+    border-color: transparent !important; // rgba(18, 126, 193, 1) !important;
   }
-
-  .typeahead {
-    position: absolute;
-    z-index: 9999;
-    left: 1.5rem;
-    right: 1.5rem;
-    margin-top: 0.8rem;
-    border-radius: 0.4rem;
-    border: solid 1px $color-silver;
-
-    .badge {
-      display: block;
-      font-size: $font-size-base;
-      color: $color-dark;
-      text-align: left;
-      border-radius: 0.4;
-      padding: 0.5rem 2.5rem;
-      margin: 0;
-      font-weight: 400;
-
-      :hover {
-        background: $color-blue !important;
-      }
-      &.badge-primary {
-        background: $color-blue;
-        color: white;
-      }
-      &.badge-dark {
-        background: white;
-      }
-    }
+  input.form-control:focus {
+    outline: none !important;
+    -webkit-box-shadow: 0px 0px 10px 2px rgba(141, 191, 224, 0.9) !important;
+    -moz-box-shadow: 0px 0px 10px 2px rgba(141, 191, 224, 0.9) !important;
+    box-shadow: 0px 0px 10px 2px rgba(141, 191, 224, 0.9) !important;
+    border-color: transparent !important; // rgba(18, 126, 193, 1) !important;
   }
 
   .pagination {
     .page-item {
       font-size: $font-size-medium;
+      font-family: "LatoRegular";
       &.active .page-link {
         background: $color-blue;
         border-color: $color-blue;

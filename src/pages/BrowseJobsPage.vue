@@ -7,8 +7,16 @@
       <b-col sm="2"><label for="input-default"><h3>Search</h3></label></b-col>
       <b-col sm="10">
         <div class="search-input">
-          <b-form-input id="input-default" type="text" placeholder="Search for projects and contents"></b-form-input>
-          <img src="../assets/icon-search.png" alt="Search Icon" />
+          <input
+            id="input-default"
+            class="form-control"
+            type="text"
+            placeholder="Search for projects and contents"
+            @focus="isSearchBarActive=true"
+            @blur="isSearchBarActive=false"
+          />
+          <search-icon v-if="!isSearchBarActive"></search-icon>
+          <search-icon-blue v-if="isSearchBarActive"></search-icon-blue>
         </div>
       </b-col>
     </b-row>
@@ -24,7 +32,7 @@
       </div>
     </b-row>
 
-    <div class="section">
+    <div class="section filter-bar-section">
       <filter-bar :filterList="filterList"></filter-bar>
     </div>
 
@@ -32,10 +40,10 @@
       <b-card no-body>
         <b-card-header>
           <b-row>
-            <b-col md="12" lg="6">
+            <b-col md="12" lg="5" xl="6">
               <h4>PROJECT/CONTENT</h4>
             </b-col>
-            <b-col md="12" lg="6">
+            <b-col md="12" lg="7" xl="6">
               <b-row class="center-row">
                 <b-col md="4">
                   <h4>BID/ENTERIES</h4>
@@ -47,7 +55,7 @@
                   <h4>PRICE(USD)</h4>
                 </b-col>
                 <b-col md="2">
-                  <img src="../assets/icon-star-yellow.png" alt="Star Icon" />
+                  <star-yellow-icon></star-yellow-icon>
                 </b-col>
               </b-row>
             </b-col>
@@ -74,12 +82,20 @@
 <script>
   import FilterBar from '../components/FilterBar'
   import JobItem from '../components/JobItem'
+  import TagsInput from '../components/TagsInput'
+  import SearchIcon from '../assets/icon-search.svg'
+  import SearchIconBlue from '../assets/icon-search-blue.svg'
+  import StarYellowIcon from '../assets/icon-star-yellow.svg'
 
   export default {
     name: 'app',
     components: {
       'job-item': JobItem,
-      'filter-bar': FilterBar
+      'tags-input': TagsInput,
+      'filter-bar': FilterBar,
+      'search-icon': SearchIcon,
+      'search-icon-blue': SearchIconBlue,
+      'star-yellow-icon': StarYellowIcon
     },
     data: () => ({
       mySkills: {
@@ -161,7 +177,8 @@
         }
       ],
       selectedTags: '',
-      currentPage: 1
+      currentPage: 1,
+      isSearchBarActive: false
     }),
     mounted () {
     },
@@ -184,34 +201,16 @@
     h1, h3 {
       color: $color-dark;
     }
-    // .filter-bar {
-    //   border: solid 1px $color-light;
-    //   border-radius: 0.6rem;
-    //   -webkit-box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.1);
-    //   -moz-box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.1);
-    //   box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.1);
-
-    //   .ml-auto .category:last-child {
-    //     border-right: none;
-    //   }
-    //   .category {
-    //     border-right: solid 1px $color-light;
-    //     img {
-    //       object-fit: contain;
-    //       margin-left: 2rem;
-    //       margin-right: 1rem;
-    //     }
-    //     h6 {
-    //       margin-top: 2.4rem;
-    //       margin-right: 2rem;
-    //     }
-    //   }
-    // }
+    @media (max-width: 991px) {
+      &.filter-bar-section {
+        display: none;
+      }
+    }
   }
 
   .search-input {
     position: relative;
-    img {
+    svg {
       position: absolute;
       left: 2rem;
       top: 1.5rem;
@@ -231,12 +230,15 @@
     box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.1);
     
     .card-header {
-      padding: 2rem 3.5rem;
+      padding: 2.4rem 3.5rem 1.4rem;
       background: $color-dark-light;
       border-top-left-radius: 0.6rem;
       border-top-right-radius: 0.6rem;
       h4 {
         color: white;
+      }
+      svg { 
+        width: 23px;
       }
       .center-row {
         text-align: center;

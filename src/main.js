@@ -5,12 +5,12 @@ import App from './App'
 import router from './router'
 import store from './store/index'
 import { sync } from 'vuex-router-sync'
-import TagsInput from '@voerro/vue-tagsinput'
+// import TagsInput from '@voerro/vue-tagsinput'
 import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
-Vue.component('tags-input', TagsInput)
+// Vue.component('tags-input', TagsInput)
 Vue.use(BootstrapVue)
 sync(store, router)
 
